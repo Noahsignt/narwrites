@@ -37,3 +37,4 @@ next-env.d.ts
 
 #firebase build
 .firebase/
+firebase-debug.log
