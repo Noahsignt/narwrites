@@ -12,6 +12,9 @@ export default function Header() {
             <Link href="/signup">
                 Signup
             </Link>
+            <Link href="/editor">
+                Editor
+            </Link>
         </div>
     )
 }

@@ -2,7 +2,7 @@ import firebase_app from "../config";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 const db = getFirestore(firebase_app)
-export default async function addData(collection, id, data) {
+async function addData(collection, id, data) {
     let result = null;
     let error = null;
 
@@ -15,4 +15,8 @@ export default async function addData(collection, id, data) {
     }
 
     return { result, error };
+}
+
+export default async function addArticle(name, data){
+    return addData('articles', name, data);
 }
