@@ -1,0 +1,43 @@
+.input-form{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 800px;
+    align-items: center;
+    margin: auto;
+    margin-top: 64px;
+    background-color: #f1f1f1;
+    padding: 32px;
+    border-radius: 10px;
+}
+
+.input-save{
+    width: 100px;
+    height: 32px;
+    background-color: white;
+    border: 1px gray solid;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.editor-window{
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.add-field{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 32px;
+}
+
+.add-field-button{
+    height: 32px;
+    background-color: white;
+    border: 1px gray solid;
+    font-weight: bold;
+    border-radius: 5px;
+}
