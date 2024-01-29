@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from 'react'
+import styles from './page.module.css'
 
 interface AddFieldProps {
     addFieldFunc : (type: string) => void;
@@ -15,12 +16,12 @@ export default function AddField({ addFieldFunc } : AddFieldProps) {
     }
 
     return (
-        <div className='add-field'>
-            <button onClick={addHeader}>
-                Add header
+        <div className={styles['add-field']}>
+            <button onClick={addHeader} className={styles['add-field-button']}>
+                Add Header
             </button>
-            <button onClick={addParagraph}>
-                Add paragraph
+            <button onClick={addParagraph} className={styles['add-field-button']}>
+                Add Paragraph
             </button>
         </div>
     )
