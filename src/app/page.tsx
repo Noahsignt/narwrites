@@ -1,5 +1,5 @@
 import styles from "./page.module.css";
-import Header from "./components/header";
+import Header from "./components/Header";
 import addData from "@/lib/firebase/firestore/addData";
 
 export default function Home() {

@@ -2,7 +2,7 @@
 import React from "react";
 import signUp from "@/lib/firebase/auth/signup";
 import { useRouter } from 'next/navigation'
-import Header from "../components/header";
+import Header from "../components/Header";
 
 function Page() {
     const [email, setEmail] = React.useState('')
