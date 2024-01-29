@@ -4,6 +4,7 @@ a {
 }
 
 textarea {
+  margin-top: 4px;
   color: inherit;
   text-decoration: none;
   font-family: '__Inter_e66fe9', '__Inter_Fallback_e66fe9';
