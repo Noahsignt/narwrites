@@ -26,10 +26,11 @@ export default function Editor(){
     const addInputField = (type : string) : void => {
         const prefix : string = `${numElements + 1}`
         const name : string = `${prefix}-${type}`
+        const className : string = `input-${type}`;
         const newField : React.JSX.Element = 
             <label> 
                 {type.charAt(0).toUpperCase() + type.slice(1)}
-                <input className={prefix} name={name} />
+                <input className={className} name={name} />
             </label>
         
         setEditorContent(
