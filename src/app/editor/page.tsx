@@ -47,7 +47,6 @@ export default function Editor(){
             return;
         }
         const formJson = Object.fromEntries(formData.entries());
-        console.log(formJson);
 
         const title = formJson['0-title'];
         if(!title){
