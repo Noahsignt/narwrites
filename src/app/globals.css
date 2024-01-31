@@ -39,6 +39,7 @@ label {
   display: flex;
   flex-direction: column;
   font-weight: bold;
+  text-transform: capitalize;
 }
 
 input {
