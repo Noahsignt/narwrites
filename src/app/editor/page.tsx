@@ -31,7 +31,7 @@ export default function Editor(){
                 ...editorContent,
                 {
                     type: type,
-                    content: ' '
+                    content: ''
                 }
             ]
         )
@@ -47,7 +47,9 @@ export default function Editor(){
             return;
         }
         const formJson = Object.fromEntries(formData.entries());
-        const title = formJson['1-title'];
+        console.log(formJson);
+
+        const title = formJson['0-title'];
         if(!title){
             console.log("Fatal Error: Title missing")
             return;

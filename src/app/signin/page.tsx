@@ -20,12 +20,12 @@ function Page() {
 
         // else successful
         console.log(result)
-        return router.push("/admin")
+        return router.push("/editor")
     }
     return (<div className="wrapper">
         <Header />
         <div className="form-wrapper">
-            <h1>Sign up</h1>
+            <h1>Sign in</h1>
             <form onSubmit={handleForm} className="form">
                 <label htmlFor="email">
                     <p>Email</p>

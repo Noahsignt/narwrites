@@ -5,10 +5,10 @@ import styles from './page.module.css'
 interface InputFieldProps {
     type: string,
     content: string,
-    key: string
+    name: string
 }
 
-export default function InputField({ type, content, key } : InputFieldProps){
+export default function InputField({ type, content, name } : InputFieldProps){
     const [currentContent, setCurrentContent] = useState<string>(content);
 
     const onChangeInput = (e : React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> ) => {
@@ -17,10 +17,10 @@ export default function InputField({ type, content, key } : InputFieldProps){
 
     return (
         <>
-            <label key={key}>
+            <label key={name}>
                 {type}
-                {type === 'paragraph' ? <textarea className={styles['input-title']} name={key} value={currentContent} onChange={onChangeInput}/> : 
-                    <input className={styles['input-title']} name={key} type={type} value={currentContent} onChange={onChangeInput}/>}
+                {type === 'paragraph' ? <textarea className={styles['input-title']} name={name} value={currentContent} onChange={onChangeInput}/> : 
+                    <input className={styles['input-title']} name={name} type="text" value={currentContent} onChange={onChangeInput}/>}
             </label>
         </>
     )

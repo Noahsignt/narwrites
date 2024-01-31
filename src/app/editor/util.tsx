@@ -11,7 +11,7 @@ export const inputObjsToJSX = (objects: inputBlockInterface[]) : React.JSX.Eleme
             const key : string = `${index}-${e.type}`;
 
             return (
-                <InputField type={e.type} content={e.content} key={key} />
+                <InputField type={e.type} content={e.content} name={key} key={key} />
             )
         }
     );
