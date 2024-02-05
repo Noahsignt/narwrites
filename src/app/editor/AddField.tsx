@@ -17,10 +17,10 @@ export default function AddField({ addFieldFunc } : AddFieldProps) {
 
     return (
         <div className={styles['add-field']}>
-            <button onClick={addHeader} className={styles['add-field-button']}>
+            <button onClick={addHeader} className={styles['add-field-button']} type="button">
                 Add Header
             </button>
-            <button onClick={addParagraph} className={styles['add-field-button']}>
+            <button onClick={addParagraph} className={styles['add-field-button']} type="button">
                 Add Paragraph
             </button>
         </div>

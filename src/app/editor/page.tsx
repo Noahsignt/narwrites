@@ -25,6 +25,18 @@ export default function Editor(){
     )
     const [numElements, setNumElements] = useState<number>(3);
 
+    //feed children InputField so that EditorContent state can be updated.
+    const updateEditorState = (index : number, content : string) : void => {
+        if(editorContent.length <= index){
+            return;
+        }
+
+        const updatedObjs = [...editorContent];
+        updatedObjs[index].content = content;
+        setEditorContent(updatedObjs);
+    }
+
+
     const addInputField = (type : string) : void => {
         setEditorContent(
             [
@@ -40,27 +52,29 @@ export default function Editor(){
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const form = e.currentTarget;
-        const formData = new FormData(form);
-        if(!formData){
-            console.log("Fatal Error: No form data")
-            return;
-        }
-        const formJson = Object.fromEntries(formData.entries());
 
-        const title = formJson['0-title'];
+        const title = editorContent[0];
         if(!title){
             console.log("Fatal Error: Title missing")
             return;
         }
-        addArticle(title, formJson);
+        
+        const name = title.content;
+        if(!name){
+            console.log("Fatal Error: Title missing")
+            return;
+        }
+
+       addArticle(name, {
+            editorContent: editorContent
+        });
     }
 
     return (
         <main>
             <Header />
             <form method="post" className={styles['input-form']} onSubmit={handleSubmit} autoComplete="off"> 
-                {inputObjsToJSX(editorContent)}
+                {inputObjsToJSX(editorContent, updateEditorState)}
                 <AddField addFieldFunc={addInputField}/>
                 <button type="submit" className={styles['input-save']}>Save blog</button>
             </form>

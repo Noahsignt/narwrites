@@ -6,12 +6,12 @@ export interface inputBlockInterface {
     content: string
 }
 
-export const inputObjsToJSX = (objects: inputBlockInterface[]) : React.JSX.Element => {
+export const inputObjsToJSX = (objects: inputBlockInterface[], updateParentFunc: (index: number, content: string) => void) : React.JSX.Element => {
     const inputFieldList : React.ReactElement[] = objects.map((e : inputBlockInterface, index : number) => {
             const key : string = `${index}-${e.type}`;
 
             return (
-                <InputField type={e.type} content={e.content} name={key} key={key} />
+                <InputField type={e.type} content={e.content} index={index} updateFormState={updateParentFunc} key={key} />
             )
         }
     );
