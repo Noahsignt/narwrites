@@ -37,6 +37,12 @@ export default function Editor(){
         setEditorContent(updatedObjs);
     }
 
+    const deleteInputField = (index : number) : void => {
+        const newContent = [...editorContent]
+        newContent.splice(index, 1);
+        setEditorContent(newContent);
+    }
+
 
     const addInputField = (type : string) : void => {
         setEditorContent(
@@ -106,7 +112,7 @@ export default function Editor(){
             <Header />
             <button onClick={loadBlog}>Load blog</button>
             <form method="post" className={styles['input-form']} onSubmit={handleSubmit} autoComplete="off"> 
-                {inputObjsToJSX(editorContent, updateEditorState)}
+                {inputObjsToJSX(editorContent, updateEditorState, deleteInputField)}
                 <AddField addFieldFunc={addInputField}/>
                 <button type="submit" className={styles['input-save']}>Save blog</button>
             </form>
