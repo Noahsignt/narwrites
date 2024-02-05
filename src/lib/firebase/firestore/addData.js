@@ -18,6 +18,5 @@ async function addData(collection, id, data) {
 }
 
 export default async function addArticle(name, data){
-    console.log(name);
     return(addData('articles', name, data));
 }
