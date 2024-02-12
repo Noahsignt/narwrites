@@ -1,11 +1,12 @@
 'use client'
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import AddField from "./AddField"
 import addArticle from "@/lib/firebase/firestore/addData";
 import getArticle from "@/lib/firebase/firestore/getData"
 import { inputBlockInterface, inputObjsToJSX, reconstructFromDB } from "./util";
 import styles from './page.module.css'
+
 
 export default function Editor(){
     const [editorContent, setEditorContent] = useState<inputBlockInterface[]>(
@@ -25,6 +26,19 @@ export default function Editor(){
         ]
     )
     const [numElements, setNumElements] = useState<number>(3);
+    const [hasSaved, setHasSaved] = useState<boolean>(true);
+
+    useEffect(() => {
+        const handleBeforeUnload = (e : BeforeUnloadEvent) => {
+            e.preventDefault();
+          };
+
+        if(!hasSaved){
+            window.addEventListener('beforeunload', handleBeforeUnload);
+        }
+
+        return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+    }, [hasSaved])
 
     //feed children InputField so that EditorContent state can be updated.
     const updateEditorState = (index : number, content : string) : void => {
@@ -35,12 +49,23 @@ export default function Editor(){
         const updatedObjs = [...editorContent];
         updatedObjs[index].content = content;
         setEditorContent(updatedObjs);
+        setHasSaved(false);
     }
 
     const deleteInputField = (index : number) : void => {
-        const newContent = [...editorContent]
-        newContent.splice(index, 1);
-        setEditorContent(newContent);
+        const content = editorContent[index]?.content;
+        let shouldDelete : boolean = true;
+
+        if(content){
+            shouldDelete  = confirm("Delete field?");
+        }
+
+        if(shouldDelete){
+            const newContent = [...editorContent]
+            newContent.splice(index, 1);
+            setEditorContent(newContent);
+            setHasSaved(false);
+        }
     }
 
 
@@ -55,18 +80,10 @@ export default function Editor(){
             ]
         )
         setNumElements(numElements + 1);
+        setHasSaved(false);
     }
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-
-        const title = editorContent[0];
-        const name = title.content;
-        if(!name){
-            console.log("Fatal Error: Title missing")
-            return;
-        }
-
+    const saveArticle = (name : string) => {
         //need to check if article exists
         getArticle(name)
         .then((article) => {
@@ -80,8 +97,22 @@ export default function Editor(){
                 title: editorContent[0].content,
                 editorContent: editorContent
                 });
+                setHasSaved(true);
             }
         })
+    }
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const title = editorContent[0];
+        const name = title.content;
+        if(!name){
+            console.log("Fatal Error: Title missing")
+            return;
+        }
+
+        saveArticle(name);
     }
     
     const getTitle = () => {
