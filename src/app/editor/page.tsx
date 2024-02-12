@@ -61,21 +61,27 @@ export default function Editor(){
         e.preventDefault();
 
         const title = editorContent[0];
-        if(!title){
-            console.log("Fatal Error: Title missing")
-            return;
-        }
-        
         const name = title.content;
         if(!name){
             console.log("Fatal Error: Title missing")
             return;
         }
 
-       addArticle(name, {
-            title: editorContent[0].content,
-            editorContent: editorContent
-        });
+        //need to check if article exists
+        getArticle(name)
+        .then((article) => {
+            let shouldWrite = true;
+            if(article){
+                shouldWrite = confirm("Overwrite existing article?");
+            }
+
+            if(shouldWrite) {
+                addArticle(name, {
+                title: editorContent[0].content,
+                editorContent: editorContent
+                });
+            }
+        })
     }
     
     const getTitle = () => {
