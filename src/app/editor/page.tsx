@@ -3,8 +3,9 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import AddField from "./AddField"
 import addArticle from "@/lib/firebase/firestore/addData";
-import getArticle from "@/lib/firebase/firestore/getData"
-import { inputBlockInterface, inputObjsToJSX, reconstructFromDB } from "./util";
+import { getArticle } from "@/lib/firebase/firestore/getData"
+import { inputObjsToJSX, reconstructFromDB } from "./util";
+import { inputBlockInterface } from "@/lib/util";
 import styles from './page.module.css'
 
 

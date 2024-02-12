@@ -8,6 +8,12 @@ a {
   text-decoration: none;
 }
 
+h2 {
+  font-weight: normal;
+}
+
+
+
 textarea {
   margin-top: 4px;
   color: inherit;

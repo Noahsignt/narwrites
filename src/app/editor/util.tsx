@@ -1,11 +1,7 @@
 import styles from './page.module.css'
 import InputField from './InputField';
 import { DocumentData } from '@firebase/firestore';
-
-export interface inputBlockInterface {
-    type: string,
-    content: string
-}
+import { inputBlockInterface } from "@/lib/util";
 
 export const inputObjsToJSX = (objects: inputBlockInterface[], updateParentFunc: (index: number, content: string) => void, deleteSelf: (index : number) => void) : React.JSX.Element => {
     const inputFieldList : React.ReactElement[] = objects.map((e : inputBlockInterface, index : number) => {

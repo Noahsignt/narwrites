@@ -3,7 +3,7 @@ import { getFirestore, collection, query, where, getDocs } from "firebase/firest
 
 const db = getFirestore(firebase_app)
 
-export default async function getArticle(name){
+export async function getArticle(name){
     try{
         const articlesRef = collection(db, "articles");
         const q = query(articlesRef, where("title", "==", name));
@@ -18,5 +18,16 @@ export default async function getArticle(name){
         console.log(error);
 
         return null;
+    }
+}
+
+export async function getAllArticles() {
+    try {
+        const articlesSnapshot = await getDocs(collection(db, "articles"));
+        return articlesSnapshot.docs.map((doc) => doc.data());
+    } catch(error) {
+        console.log(error);
+
+        return [];
     }
 }

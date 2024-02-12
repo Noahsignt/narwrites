@@ -2,7 +2,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  padding: 32px;
+  align-items: start;
+  padding: 0 240px;
   min-height: 100vh;
+}
+
+.articles {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
 }
