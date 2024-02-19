@@ -45,11 +45,3 @@
     justify-content: center;
     gap: 32px;
 }
-
-.add-field-button{
-    height: 32px;
-    background-color: white;
-    border: 1px gray solid;
-    font-weight: bold;
-    border-radius: 5px;
-}

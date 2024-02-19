@@ -53,3 +53,11 @@ input {
   padding: 8px;
   height: auto;
 }
+
+button {
+  height: 32px;
+  background-color: white;
+  border: 1px gray solid;
+  font-weight: bold;
+  border-radius: 5px;
+}

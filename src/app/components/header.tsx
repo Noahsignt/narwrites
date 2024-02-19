@@ -13,9 +13,6 @@ export default function Header() {
                 <Link href="/signin">
                     Signin
                 </Link>
-                <Link href="/signup">
-                    Signup
-                </Link>
                 <Link href="/editor">
                     Editor
                 </Link>
