@@ -10,7 +10,7 @@ export async function getArticle(name){
         const res = await getDocs(q);
 
         if(!res.empty){
-            return res.docs[0].data().editorContent;
+            return res.docs[0].data();
         }
 
         return null;

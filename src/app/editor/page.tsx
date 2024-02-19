@@ -130,8 +130,12 @@ export default function Editor(){
 
         getArticle(title)
         .then(article => {
+            if(!article){
+                throw new Error('Fatal Error: Cannot find article');
+            }
+
             //construct article
-            const newContent : inputBlockInterface[] = reconstructFromDB(article);
+            const newContent : inputBlockInterface[] = reconstructFromDB(article.editorContent);
 
             if(!newContent.length){
                 throw new Error('Fatal Error: Cannot reconstruct article');
